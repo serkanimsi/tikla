@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tıklama Sayacı</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      height: 100%;
+      width: 100%;
+      border: none;
+      background-color: #3498db;
+      color: white;
+      font-size: 5rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #count {
+      font-size: 8rem;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="increaseCount()">
+    <div id="count">0</div>
+    TIKLA
+  </button>
+
+  <script>
+    let count = 0;
+
+    // Sayfa açıldığında localStorage'dan değeri oku
+    if (localStorage.getItem('clickCount')) {
+      count = parseInt(localStorage.getItem('clickCount'));
+      document.getElementById('count').innerText = count;
+    }
+
+    function increaseCount() {
+      count++;
+      document.getElementById('count').innerText = count;
+      localStorage.setItem('clickCount', count); // Yeni değeri sakla
+    }
+  </script>
+
+</body>
+</html>
